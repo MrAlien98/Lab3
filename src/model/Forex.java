@@ -1,8 +1,11 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Forex implements Comparable<Forex>{
 	
 	private double value;
+	private LocalDate date;
 	
 	public Forex() {
 	
@@ -20,6 +23,20 @@ public class Forex implements Comparable<Forex>{
 	 */
 	public void setValue(double value) {
 		this.value = value;
+	}
+	
+	/**
+	 * @return the date
+	 */
+	public LocalDate getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
 	@Override

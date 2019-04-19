@@ -1,8 +1,11 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Stock implements Comparable<Stock>{
 
 	private double value;
+	private LocalDate date;
 	
 	public Stock() {
 		
@@ -22,6 +25,20 @@ public class Stock implements Comparable<Stock>{
 		this.value = value;
 	}
 
+	/**
+	 * @return the date
+	 */
+	public LocalDate getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	
 	@Override
 	public int compareTo(Stock a1) {
 		if(this.getValue()>a1.getValue()) {
