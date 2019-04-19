@@ -8,6 +8,10 @@ public class Forex implements Comparable<Forex>{
 	private double value;
 	private LocalDate date;
 	
+	public Forex() {
+		
+	}
+	
 	public Forex(String type, double value, LocalDate date) {
 		this.type=type;
 		this.value=value;

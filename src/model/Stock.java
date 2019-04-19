@@ -8,6 +8,10 @@ public class Stock implements Comparable<Stock>{
 	private double value;
 	private LocalDate date;
 	
+	public Stock() {
+		
+	}
+	
 	public Stock(String type, double value, LocalDate date) {
 		this.type=type;
 		this.value=value;

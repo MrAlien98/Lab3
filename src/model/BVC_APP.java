@@ -194,57 +194,57 @@ public class BVC_APP {
 		
 	}
 	
-//	public void loadData() {
-//		FileReader fr = null;
-//	    BufferedReader br = null;
-//			try {
-//				fr = new FileReader (new File("data/XAUUSD prices.txt"));
-//				br = new BufferedReader(fr);
-//				XAUUSD = new AVLTree<>();
-//					while(br.readLine()!=null) {
-//						String read = br.readLine();
-//						String[] v = read.split(", ");
-//						Stock s = new Stock();
-//						s.setValue(Double.parseDouble(v[2]));
-//						XAUUSD.add(s);
-//					}
-//			
-//					fr.close();
-//					br.close();
-//			
-//				}catch (Exception e) { 
-//					// TODO: handle exception
-//				}
-//			
-//			try {
-//				fr = new FileReader (new File("data/EURUSD prices.txt"));
-//				br = new BufferedReader(fr);
-//				EURUSD = new AVLTree<>();
-//					while(br.readLine()!=null) {
-//						String read = br.readLine();
-//						String[] v = read.split(", ");
-//						Stock s = new Stock();
-//						s.setValue(Double.parseDouble(v[2]));
-//						EURUSD.add(s);
-//					}
-//			
-//					fr.close();
-//					br.close();
-//			
-//				}catch (Exception e) { 
-//					// TODO: handle exception
-//				}
-//	}
-//	
-//	public void filterData(String stock, String initialDate, String finalDate) {
-//		   
-//	}
-//	
-//	public double highestPrice() {
-//		
-//
-//		return 0;
-//		
-//	}
+	public void loadData() {
+		FileReader fr = null;
+	    BufferedReader br = null;
+			try {
+				fr = new FileReader (new File("data/XAUUSD prices.txt"));
+				br = new BufferedReader(fr);
+				XAUUSD = new AVLTree<>();
+					while(br.readLine()!=null) {
+						String read = br.readLine();
+						String[] v = read.split(", ");
+						Stock s = new Stock();
+						s.setValue(Double.parseDouble(v[2]));
+						XAUUSD.add(s);
+					}
+			
+					fr.close();
+					br.close();
+			
+				}catch (Exception e) { 
+					// TODO: handle exception
+				}
+			
+			try {
+				fr = new FileReader (new File("data/EURUSD prices.txt"));
+				br = new BufferedReader(fr);
+				EURUSD = new AVLTree<>();
+					while(br.readLine()!=null) {
+						String read = br.readLine();
+						String[] v = read.split(", ");
+						Stock s = new Stock();
+						s.setValue(Double.parseDouble(v[2]));
+						EURUSD.add(s);
+					}
+			
+					fr.close();
+					br.close();
+			
+				}catch (Exception e) { 
+					// TODO: handle exception
+				}
+	}
+	
+	public void filterData(String stock, String initialDate, String finalDate) {
+		   
+	}
+	
+	public double highestPrice() {
+		
+
+		return 0;
+		
+	}
 		
 }
