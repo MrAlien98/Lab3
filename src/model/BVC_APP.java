@@ -163,5 +163,11 @@ public class BVC_APP {
 	public void setBTCUSD(ArrayList<Forex> bTCUSD) {
 		BTCUSD = bTCUSD;
 	}
+	
+	public double highestPrice(String initialDate, String finalDate) {
+		
+		return 0;
+		
+	}
 		
 }
