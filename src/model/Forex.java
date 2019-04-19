@@ -4,11 +4,14 @@ import java.time.LocalDate;
 
 public class Forex implements Comparable<Forex>{
 	
+	private String type;
 	private double value;
 	private LocalDate date;
 	
-	public Forex() {
-	
+	public Forex(String type, double value, LocalDate date) {
+		this.type=type;
+		this.value=value;
+		this.date=date;
 	}
 
 	/**
@@ -37,6 +40,20 @@ public class Forex implements Comparable<Forex>{
 	 */
 	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override

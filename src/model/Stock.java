@@ -4,11 +4,14 @@ import java.time.LocalDate;
 
 public class Stock implements Comparable<Stock>{
 
+	private String type;
 	private double value;
 	private LocalDate date;
 	
-	public Stock() {
-		
+	public Stock(String type, double value, LocalDate date) {
+		this.type=type;
+		this.value=value;
+		this.date=date;
 	}
 	
 	/**
@@ -39,6 +42,20 @@ public class Stock implements Comparable<Stock>{
 		this.date = date;
 	}
 	
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public int compareTo(Stock a1) {
 		if(this.getValue()>a1.getValue()) {

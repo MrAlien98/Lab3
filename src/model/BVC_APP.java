@@ -167,57 +167,84 @@ public class BVC_APP {
 		BTCUSD = bTCUSD;
 	}
 	
-	public void loadData() {
-		FileReader fr = null;
-	    BufferedReader br = null;
+	public void loadForex(String url) {
+		if(url.equals("AAPL")) {
+			url="src/forexData/AAPL.txt";
 			try {
-				fr = new FileReader (new File("data/XAUUSD prices.txt"));
-				br = new BufferedReader(fr);
-				XAUUSD = new AVLTree<>();
-					while(br.readLine()!=null) {
-						String read = br.readLine();
-						String[] v = read.split(", ");
-						Stock s = new Stock();
-						s.setValue(Double.parseDouble(v[2]));
-						XAUUSD.add(s);
-					}
-			
-					fr.close();
-					br.close();
-			
-				}catch (Exception e) { 
-					// TODO: handle exception
+				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+				String line="";
+				while((line=br.readLine())!=null) {
+					String[] obj=line.split(", ");
 				}
-			
-			try {
-				fr = new FileReader (new File("data/EURUSD prices.txt"));
-				br = new BufferedReader(fr);
-				EURUSD = new AVLTree<>();
-					while(br.readLine()!=null) {
-						String read = br.readLine();
-						String[] v = read.split(", ");
-						Stock s = new Stock();
-						s.setValue(Double.parseDouble(v[2]));
-						EURUSD.add(s);
-					}
-			
-					fr.close();
-					br.close();
-			
-				}catch (Exception e) { 
-					// TODO: handle exception
-				}
+			}catch(Exception e) {
+				
+			}
+		}else if(url.equals("USSPX500")) {
+			url="src/forexData/USSPX500.txt";
+		}else if(url.equals("US30")) {
+			url="src/forexData/US30.txt";
+		}else if(url.equals("MSFT")) {
+			url="src/forexData/MSFT.txt";
+		}else if(url.equals("WTI")) {
+			url="src/forexData/WTI.txt";
+		}
 	}
 	
-	public void filterData(String stock, String initialDate, String finalDate) {
-		   
+	public void loadStock(String url) {
+		
 	}
 	
-	public double highestPrice() {
-		
-
-		return 0;
-		
-	}
+//	public void loadData() {
+//		FileReader fr = null;
+//	    BufferedReader br = null;
+//			try {
+//				fr = new FileReader (new File("data/XAUUSD prices.txt"));
+//				br = new BufferedReader(fr);
+//				XAUUSD = new AVLTree<>();
+//					while(br.readLine()!=null) {
+//						String read = br.readLine();
+//						String[] v = read.split(", ");
+//						Stock s = new Stock();
+//						s.setValue(Double.parseDouble(v[2]));
+//						XAUUSD.add(s);
+//					}
+//			
+//					fr.close();
+//					br.close();
+//			
+//				}catch (Exception e) { 
+//					// TODO: handle exception
+//				}
+//			
+//			try {
+//				fr = new FileReader (new File("data/EURUSD prices.txt"));
+//				br = new BufferedReader(fr);
+//				EURUSD = new AVLTree<>();
+//					while(br.readLine()!=null) {
+//						String read = br.readLine();
+//						String[] v = read.split(", ");
+//						Stock s = new Stock();
+//						s.setValue(Double.parseDouble(v[2]));
+//						EURUSD.add(s);
+//					}
+//			
+//					fr.close();
+//					br.close();
+//			
+//				}catch (Exception e) { 
+//					// TODO: handle exception
+//				}
+//	}
+//	
+//	public void filterData(String stock, String initialDate, String finalDate) {
+//		   
+//	}
+//	
+//	public double highestPrice() {
+//		
+//
+//		return 0;
+//		
+//	}
 		
 }
