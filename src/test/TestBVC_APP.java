@@ -17,6 +17,14 @@ class TestBVC_APP {
 		stage1();
 		b.loadData();
 		assertEquals(15865, b.getXAUUSD().size());
+		assertNotNull(b.getXAUUSD());
+	}
+	
+	@Test
+	void loadDataTest2() {
+		stage1();
+		b.loadData();
+		assertNotNull(b.getEURUSD());
 	}
 
 }
