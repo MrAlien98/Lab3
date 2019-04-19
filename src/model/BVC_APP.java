@@ -164,8 +164,17 @@ public class BVC_APP {
 		BTCUSD = bTCUSD;
 	}
 	
-	public double highestPrice(String initialDate, String finalDate) {
+	public void loadData() {
+		   
+	}
+	
+	public void filterData(String stock, String initialDate, String finalDate) {
+		   
+	}
+	
+	public double highestPrice() {
 		
+
 		return 0;
 		
 	}
