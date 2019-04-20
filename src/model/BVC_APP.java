@@ -3,6 +3,8 @@ package model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import dataStructures.AVLTree;
@@ -172,15 +174,38 @@ public class BVC_APP {
 			url="src/forexData/AAPL.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+				AAPL = new RedBlackTree<>();
 				String line="";
 				while((line=br.readLine())!=null) {
 					String[] obj=line.split(", ");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+					String date = obj[1];
+					LocalDate localDate = LocalDate.parse(date, formatter);
+					Forex f = new Forex(obj[0],Double.parseDouble(obj[2]),localDate);
+					AAPL.add(f);
 				}
+					br.close();
 			}catch(Exception e) {
 				
 			}
 		}else if(url.equals("USSPX500")) {
-			url="src/forexData/USSPX500.txt";
+			url="data/USSPX500.txt";
+			try {
+				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+				USSPX500 = new RedBlackTree<>();
+				String line="";
+				while((line=br.readLine())!=null) {
+					String[] obj=line.split(", ");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+					String date = obj[1];
+					LocalDate localDate = LocalDate.parse(date, formatter);
+					Forex f = new Forex(obj[0],Double.parseDouble(obj[2]),localDate);
+					USSPX500.add(f);
+				}
+					br.close();
+			}catch(Exception e) {
+				
+			}
 		}else if(url.equals("US30")) {
 			url="src/forexData/US30.txt";
 		}else if(url.equals("MSFT")) {
@@ -191,49 +216,80 @@ public class BVC_APP {
 	}
 	
 	public void loadStock(String url) {
-		
-	}
-	
-	public void loadData() {
-		FileReader fr = null;
-	    BufferedReader br = null;
+		if (url.equals("XAUUSD")) {
+			url="data/XAUUSD.txt";
 			try {
-				fr = new FileReader (new File("data/XAUUSD prices.txt"));
-				br = new BufferedReader(fr);
+				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				XAUUSD = new AVLTree<>();
-					while(br.readLine()!=null) {
-						String read = br.readLine();
-						String[] v = read.split(", ");
-						Stock s = new Stock();
-						s.setValue(Double.parseDouble(v[2]));
-						XAUUSD.add(s);
-					}
-			
-					fr.close();
-					br.close();
-			
-				}catch (Exception e) { 
-					// TODO: handle exception
+				String line="";
+				while((line=br.readLine())!=null) {
+					String[] obj=line.split(", ");
+//					String[] hour = obj[1].split(" ");
+//					String date = hour[0];
+//					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//					LocalDate localDate = LocalDate.parse(date, formatter);
+					LocalDate localDate = LocalDate.now();
+					XAUUSD.add(new Stock(obj[0],Double.parseDouble(obj[2]),localDate));
 				}
-			
+					br.close();
+			}catch(Exception e) {
+				
+			}
+		}else if(url.equals("EURUSD")) {
+			url="data/EURUSD.txt";
 			try {
-				fr = new FileReader (new File("data/EURUSD prices.txt"));
-				br = new BufferedReader(fr);
+				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				EURUSD = new AVLTree<>();
-					while(br.readLine()!=null) {
-						String read = br.readLine();
-						String[] v = read.split(", ");
-						Stock s = new Stock();
-						s.setValue(Double.parseDouble(v[2]));
-						EURUSD.add(s);
-					}
-			
-					fr.close();
-					br.close();
-			
-				}catch (Exception e) { 
-					// TODO: handle exception
+				String line="";
+				while((line=br.readLine())!=null) {
+					String[] obj=line.split(", ");
+					String[] hour = obj[1].split(" ");
+					String date = hour[0];
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate localDate = LocalDate.parse(date, formatter);
+					EURUSD.add(new Stock(obj[0],Double.parseDouble(obj[2]),localDate));
 				}
+					br.close();
+			}catch(Exception e) {
+				
+			}
+			}else if(url.equals("GBPCAD")) {
+				url="data/GBPCAD.txt";
+				try {
+					BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+					GBPCAD = new AVLTree<>();
+					String line="";
+					while((line=br.readLine())!=null) {
+						String[] obj=line.split(", ");
+						String[] hour = obj[1].split(" ");
+						String date = hour[0];
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						LocalDate localDate = LocalDate.parse(date, formatter);
+						GBPCAD.add(new Stock(obj[0],Double.parseDouble(obj[2]),localDate));
+					}
+						br.close();
+				}catch(Exception e) {
+					
+				}
+				}else if(url.equals("USDJPY")) {
+					url="data/USDJPY.txt";
+					try {
+						BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+						USDJPY = new AVLTree<>();
+						String line="";
+						while((line=br.readLine())!=null) {
+						String[] obj=line.split(", ");
+						String[] hour = obj[1].split(" ");
+						String date = hour[0];
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						LocalDate localDate = LocalDate.parse(date, formatter);
+						USDJPY.add(new Stock(obj[0],Double.parseDouble(obj[2]),localDate));
+						}
+							br.close();
+					}catch(Exception e) {
+					
+					}
+		}
 	}
 	
 	public void filterData(String stock, String initialDate, String finalDate) {
