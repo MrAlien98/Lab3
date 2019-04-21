@@ -43,6 +43,14 @@ class TestBVC_APP {
 	}
 	
 	@Test
+	void loadStockTest4() {
+		stage1();
+		b.loadStock("WTI");
+		assertNotNull(b.getWTI());
+		assertEquals(47540, b.getWTI().size());
+	}
+	
+	@Test
 	void loadForexTest1() {
 		stage1();
 		b.loadForex("XAUUSD");
