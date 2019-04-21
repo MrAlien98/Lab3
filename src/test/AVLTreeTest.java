@@ -58,7 +58,7 @@ int diez;
 
 	
 	@Test
-	public void addTest() {
+	public void deleteTest() {
 		stage2();
 		Integer[] arr=new Integer[5];
 		arr[0]=uno;
@@ -82,7 +82,7 @@ int diez;
 	}
 
 	@Test
-	public void deleteTest() {
+	public void addTest() {
 		stage2();
 		Integer[] arr=new Integer[6];
 		arr[0]=cuatro;
