@@ -14,10 +14,13 @@ public class BVC_APP {
 	
 	private AVLTree<Stock> US30;
 	private AVLTree<Stock> USSPX500;
+	private AVLTree<Stock> WTI;
 	private AVLTree<Stock> AAPL;
 	private AVLTree<Stock> MSFT;
-	private AVLTree<Stock> WTI;
 
+	private AVLTree<Stock> stocks;
+	private RedBlackTree<Forex> forexs;
+	
 	private RedBlackTree<Forex> XAUUSD;
 	private RedBlackTree<Forex> EURUSD;
 	private RedBlackTree<Forex> GBPCAD;
@@ -27,7 +30,35 @@ public class BVC_APP {
 	private ArrayList<Forex> BTCUSD;
 	
 	public BVC_APP() {
-		
+		BTCUSD=new ArrayList<>();
+	}
+
+	/**
+	 * @return the forexs
+	 */
+	public RedBlackTree<Forex> getForexs() {
+		return forexs;
+	}
+
+	/**
+	 * @param forexs the forexs to set
+	 */
+	public void setForexs(RedBlackTree<Forex> forexs) {
+		this.forexs = forexs;
+	}
+
+	/**
+	 * @return the stocks
+	 */
+	public AVLTree<Stock> getStocks() {
+		return stocks;
+	}
+
+	/**
+	 * @param stocks the stocks to set
+	 */
+	public void setStocks(AVLTree<Stock> stocks) {
+		this.stocks = stocks;
 	}
 
 	/**
@@ -179,7 +210,7 @@ public class BVC_APP {
 				String line="";
 				while((line=br.readLine())!=null) {
 					String[] obj=line.split(", ");
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					String date = obj[1];
 					LocalDate localDate = LocalDate.parse(date, formatter);
 					Stock s = new Stock(obj[0],Double.parseDouble(obj[2]),localDate);
