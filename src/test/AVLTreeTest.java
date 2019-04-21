@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import dataStructures.AVLTree;
 import dataStructures.RedBlackTree;
 import model.*
 ;class AVLTreeTest {
-private RedBlackTree<Integer> tree;
+private AVLTree<Integer> tree;
 	
 	void stage1() {
-		tree= new RedBlackTree<Integer>();
+		tree= new AVLTree<Integer>();
 		tree.add(5);
 		tree.add(4);
 		tree.add(1);
@@ -23,7 +24,10 @@ private RedBlackTree<Integer> tree;
 		tree.add(1000);
 		
 	}
-
+	
+	void stage2() {
+		tree= new AVLTree<Integer>();
+	}
 	@Test
 	public void searchTest() {
 		stage1();
