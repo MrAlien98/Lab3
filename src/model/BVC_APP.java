@@ -12,9 +12,9 @@ import dataStructures.RedBlackTree;
 
 public class BVC_APP {
 	
-	private AVLTree<FinancialThing> general1;
+	private AVLTree<FinancialThing> stocks;
 	
-	private RedBlackTree<FinancialThing> general2;
+	private RedBlackTree<FinancialThing> forexs;
 	
 	private ArrayList<FinancialThing> BTCUSD;
 	
@@ -40,39 +40,39 @@ public class BVC_APP {
 	 * @return the general1
 	 */
 	public AVLTree<FinancialThing> getGeneral1() {
-		return general1;
+		return stocks;
 	}
 
 	/**
 	 * @param general1 the general1 to set
 	 */
 	public void setGeneral1(AVLTree<FinancialThing> general1) {
-		this.general1 = general1;
+		this.stocks = general1;
 	}
 
 	/**
 	 * @return the general2
 	 */
 	public RedBlackTree<FinancialThing> getGeneral2() {
-		return general2;
+		return forexs;
 	}
 
 	/**
 	 * @param general2 the general2 to set
 	 */
 	public void setGeneral2(RedBlackTree<FinancialThing> general2) {
-		this.general2 = general2;
+		this.forexs = general2;
 	}
 	
 	public void loadData(String url, LocalDate start, LocalDate end) {
 		if(url.equals("AAPL") || url.equals("MSFT") || url.equals("US30") || url.equals("WTI") || url.equals("USSPX500")) {
-			loadStock(url, start, end);
+			loadData(2, url, start, end);
 		}else {
-			
+			loadData(1, url, start, end);
 		}
 	}
 	
-	public void loadStock(String url, LocalDate start, LocalDate end) {
+	public void loadData(int x, String url, LocalDate start, LocalDate end) {
 		try {
 			BufferedReader br=new BufferedReader(new FileReader(new File("src/stockData"+url+".txt")));
 			String line="";
@@ -83,30 +83,18 @@ public class BVC_APP {
 				String date = d[0];
 				LocalDate lDate = LocalDate.parse(date, formatter);
 				if(lDate.isBefore(start) && lDate.isAfter(end)) {
-					FinancialThing ft=new FinancialThing(2, Double.parseDouble(obj[3]), lDate);
-					general1.add(ft);
+					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[3]), lDate);
+					if(x==1) {
+						forexs.add(ft);
+					}else {
+						stocks.add(ft);
+					}
 				}
 			}
 			br.close();
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
-	
-	public void loadForex(String url, LocalDate start, LocalDate end) {
-			
-	}
-	
-	public void filterData(String stock, String initialDate, String finalDate) {
-		   
-	}
-	
-	public double highestPrice() {
-		
-
-		return 0;
-		
-	}
-		
 }
