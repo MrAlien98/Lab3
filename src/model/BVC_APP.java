@@ -39,28 +39,28 @@ public class BVC_APP {
 	/**
 	 * @return the general1
 	 */
-	public AVLTree<FinancialThing> getGeneral1() {
+	public AVLTree<FinancialThing> getStocks() {
 		return stocks;
 	}
 
 	/**
 	 * @param general1 the general1 to set
 	 */
-	public void setGeneral1(AVLTree<FinancialThing> general1) {
+	public void setStocks(AVLTree<FinancialThing> general1) {
 		this.stocks = general1;
 	}
 
 	/**
 	 * @return the general2
 	 */
-	public RedBlackTree<FinancialThing> getGeneral2() {
+	public RedBlackTree<FinancialThing> getForexs() {
 		return forexs;
 	}
 
 	/**
 	 * @param general2 the general2 to set
 	 */
-	public void setGeneral2(RedBlackTree<FinancialThing> general2) {
+	public void setForexs(RedBlackTree<FinancialThing> general2) {
 		this.forexs = general2;
 	}
 	
@@ -77,13 +77,14 @@ public class BVC_APP {
 			BufferedReader br=new BufferedReader(new FileReader(new File("src/stockData/"+url+".txt")));
 			String line="";
 			stocks = new AVLTree<>();
+			forexs = new RedBlackTree<>();
 			while((line=br.readLine())!=null) {
 				String[] obj=line.split(", ");
 				String[] d=obj[1].split(" ");
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
 				String date = d[0];
 				LocalDate lDate = LocalDate.parse(date, formatter);
-				if(lDate.isBefore(start)||lDate.isEqual(start) && lDate.isAfter(end)||lDate.isEqual(end)) {
+				if( lDate.isEqual(start) || (lDate.isAfter(start) && lDate.isBefore(end)) ) {
 					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[2]), lDate);
 					if(x==1) {
 						forexs.add(ft);
