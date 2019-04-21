@@ -1,1 +1,17 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+    -fx-font-size: 12px;
+    -fx-font-family: sans-serif;
+    -fx-background-color: #0BB6C4;
+}
+
+.sidebar-section {
+    -fx-min-width: 200px;
+    -fx-pref-width: 200px;
+    -fx-max-width: 200px;
+    -fx-border-width: 1;
+    -fx-border-color: transparent #E8E8E8 transparent transparent;
+}
+
+#Tabpane{
+	-fx-background-color: #0BB6C4;
+}

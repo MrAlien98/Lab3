@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
-<?import javafx.scene.layout.BorderPane?>
-	
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
-	<!-- TODO Add Nodes -->
-</BorderPane>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane id="Tabpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+  <tabs>
+    <Tab text="Consultas">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+    <Tab text="Graficas">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <SplitPane dividerPositions="0.7100271002710027" layoutX="220.0" layoutY="79.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.3238255033557047" layoutX="199.0" layoutY="43.0" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <DatePicker fx:id="initialDate" layoutX="8.0" layoutY="32.0" />
+                                          <DatePicker fx:id="endDate" layoutX="8.0" layoutY="103.0" />
+                                          <CheckBox fx:id="checkForex" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" text="Divisas" />
+                                          <CheckBox fx:id="checkStock" layoutX="115.0" layoutY="152.0" mnemonicParsing="false" text="Acciones" />
+                                          <Button fx:id="butLoad" layoutX="52.0" layoutY="198.0" mnemonicParsing="false" text="Cargar Datos" />
+                                          <Label layoutX="70.0" layoutY="14.0" text="Desde" />
+                                          <Label layoutX="72.0" layoutY="86.0" text="Hasta" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Canvas fx:id="canvas" height="257.0" width="400.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <ChoiceBox fx:id="choiceElement" layoutX="14.0" layoutY="27.0" prefHeight="25.0" prefWidth="165.0" />
+                              <Label layoutX="14.0" layoutY="6.0" text="Agregar Elementos a la Grafica" />
+                              <Button fx:id="cleanCanvas" layoutX="273.0" layoutY="27.0" mnemonicParsing="false" text="LimpiarGrafica" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
