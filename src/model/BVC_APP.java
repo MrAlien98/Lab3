@@ -74,16 +74,17 @@ public class BVC_APP {
 	
 	public void loadData(int x, String url, LocalDate start, LocalDate end) {
 		try {
-			BufferedReader br=new BufferedReader(new FileReader(new File("src/stockData"+url+".txt")));
+			BufferedReader br=new BufferedReader(new FileReader(new File("src/stockData/"+url+".txt")));
 			String line="";
+			stocks = new AVLTree<>();
 			while((line=br.readLine())!=null) {
 				String[] obj=line.split(", ");
 				String[] d=obj[1].split(" ");
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
 				String date = d[0];
 				LocalDate lDate = LocalDate.parse(date, formatter);
-				if(lDate.isBefore(start) && lDate.isAfter(end)) {
-					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[3]), lDate);
+				if(lDate.isBefore(start)||lDate.isEqual(start) && lDate.isAfter(end)||lDate.isEqual(end)) {
+					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[2]), lDate);
 					if(x==1) {
 						forexs.add(ft);
 					}else {
