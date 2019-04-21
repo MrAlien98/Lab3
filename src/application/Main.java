@@ -1,19 +1,32 @@
 package application;
 	
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import model.BVC_APP;
 
 
 public class Main extends Application {
+	
+	public static BVC_APP bvc;
+	
+	public Main() {
+		bvc=new BVC_APP();
+	}
+	
+	public static BVC_APP getBVC() {
+		return bvc;
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			TabPane root = (TabPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
-//			Image img=new Image("img/BackGround.jpeg", 900, 900, true, true);
-//			root.setBackground(new Background(new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT)));
+			primaryStage.getIcons().add(new Image("img/BVC.png"));
+			primaryStage.setTitle("BOLSA DE VALORES DE COLOMBIA");
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
