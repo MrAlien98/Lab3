@@ -37,6 +37,17 @@ private RedBlackTree<Integer> tree;
 		assertEquals(12, tree.size());
 	}
 
-	
+	@Test
+	public void deleteTest() {
+		stage1();
+		tree.remove(1000);
+		tree.remove(98754);
+		tree.remove(98765);
+		
+		assertEquals(9, tree.size());
+		assertNull(tree.search(1000));
+		assertNull(tree.search(98754));
+		assertNull(tree.search(98765));
+	}
 
 }
