@@ -1,9 +1,13 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import model.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+
+import model.BVC_APP;
 
 class TestBVC_APP {
 	private BVC_APP b;
@@ -15,7 +19,9 @@ class TestBVC_APP {
 	@Test
 	void loadStockTest1() {
 		stage1();
-		b.loadStock("AAPL");
+		LocalDate start=LocalDate.of(1990, 12, 24);
+		LocalDate end=LocalDate.of(1999, 11, 11);
+		b.loadStock("AAPL", start, end);
 //		assertNotNull(b.getUSSPX500());
 //		assertEquals(1233, b.getUSSPX500().size());
 	}
