@@ -203,7 +203,7 @@ public class BVC_APP {
 	
 	public void loadStock(String url) {
 		if(url.equals("AAPL")) {
-			url="src/forexData/AAPL.txt";
+			url="src/stockData/AAPL.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				AAPL = new AVLTree<>();
@@ -221,7 +221,7 @@ public class BVC_APP {
 				
 			}
 		}else if(url.equals("USSPX500")) {
-			url="data/#USSPX500.txt";
+			url="src/stockData/USSPX500.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				USSPX500 = new AVLTree<>();
@@ -240,7 +240,7 @@ public class BVC_APP {
 				
 			}
 		}else if(url.equals("US30")) {
-			url="data/#US30.txt";
+			url="src/stockData/US30.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				US30 = new AVLTree<>();
@@ -260,15 +260,32 @@ public class BVC_APP {
 				
 			}
 		}else if(url.equals("MSFT")) {
-			url="src/forexData/MSFT.txt";
+			url="src/stockData/MSFT.txt";
 		}else if(url.equals("WTI")) {
-			url="src/forexData/WTI.txt";
+			url="src/stockData/WTI.txt";
+			try {
+				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
+				WTI = new AVLTree<>();
+				String line="";
+				while((line=br.readLine())!=null) {
+					String[] obj=line.split(", ");
+//					String[] hour = obj[1].split(" ");
+//					String date = hour[0];
+//					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//					LocalDate localDate = LocalDate.parse(date, formatter);
+					LocalDate localDate = LocalDate.now();
+					WTI.add(new Stock(obj[0],Double.parseDouble(obj[2]),localDate));
+				}
+					br.close();
+			}catch(Exception e) {
+				
+			}
 		}
 	}
 	
 	public void loadForex(String url) {
 		if (url.equals("XAUUSD")) {
-			url="data/XAUUSD.txt";
+			url="src/forexData/XAUUSD.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				XAUUSD = new RedBlackTree<>();
@@ -288,7 +305,7 @@ public class BVC_APP {
 				
 			}
 		}else if(url.equals("EURUSD")) {
-			url="data/EURUSD.txt";
+			url="src/forexData/EURUSD.txt";
 			try {
 				BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 				EURUSD = new RedBlackTree<>();
@@ -307,7 +324,7 @@ public class BVC_APP {
 				
 			}
 			}else if(url.equals("GBPCAD")) {
-				url="data/GBPCAD.txt";
+				url="src/forexData/GBPCAD.txt";
 				try {
 					BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 					GBPCAD = new RedBlackTree<>();
@@ -325,7 +342,7 @@ public class BVC_APP {
 					
 				}
 				}else if(url.equals("USDJPY")) {
-					url="data/USDJPY.txt";
+					url="src/forexData/USDJPY.txt";
 					try {
 						BufferedReader br=new BufferedReader(new FileReader(new File(url)));
 						USDJPY = new RedBlackTree<Forex>();
