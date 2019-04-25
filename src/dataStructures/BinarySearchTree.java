@@ -3,10 +3,8 @@ package dataStructures;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Queue;
 import java.util.Set;
@@ -606,14 +604,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Seri
         return (new JavaCompatibleBinarySearchTree<T>(this));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return TreePrinter.getString(this);
-    }
-
     @SuppressWarnings("serial")
 	public static class Node<T extends Comparable<T>> implements Serializable{
 
@@ -665,47 +655,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Seri
          */
         public Node<T> createNewNode(Node<T> parent, T id);
     }
-
-    protected static class TreePrinter {
-
-        public static <T extends Comparable<T>> String getString(BinarySearchTree<T> tree) {
-            if (tree.root == null)
-                return "Tree has no nodes.";
-            return getString(tree.root, "", true);
-        }
-
-        private static <T extends Comparable<T>> String getString(Node<T> node, String prefix, boolean isTail) {
-            StringBuilder builder = new StringBuilder();
-
-            if (node.parent != null) {
-                String side = "left";
-                if (node.equals(node.parent.greater))
-                    side = "right";
-                builder.append(prefix + (isTail ? "└── " : "├── ") + "(" + side + ") " + node.id + "\n");
-            } else {
-                builder.append(prefix + (isTail ? "└── " : "├── ") + node.id + "\n");
-            }
-            List<Node<T>> children = null;
-            if (node.lesser != null || node.greater != null) {
-                children = new ArrayList<Node<T>>(2);
-                if (node.lesser != null)
-                    children.add(node.lesser);
-                if (node.greater != null)
-                    children.add(node.greater);
-            }
-            if (children != null) {
-                for (int i = 0; i < children.size() - 1; i++) {
-                    builder.append(getString(children.get(i), prefix + (isTail ? "    " : "│   "), false));
-                }
-                if (children.size() >= 1) {
-                    builder.append(getString(children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true));
-                }
-            }
-
-            return builder.toString();
-        }
-    }
-
+    
     private static class JavaCompatibleBinarySearchTree<T extends Comparable<T>> extends java.util.AbstractCollection<T> {
 
         protected BinarySearchTree<T> tree = null;

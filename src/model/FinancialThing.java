@@ -6,6 +6,7 @@ public class FinancialThing implements Comparable<FinancialThing>{
 
 	public static final int FOREX=1;
 	public static final int STOCK=2;
+	public static final int UNDEFINITE=0;
 	
 	private int type;
 	private double value;
@@ -13,6 +14,12 @@ public class FinancialThing implements Comparable<FinancialThing>{
 		
 	public FinancialThing(int type, double value, LocalDate date) {
 		this.type = type;
+		this.value = value;
+		this.date = date;
+	}
+	
+	public FinancialThing(double value, LocalDate date) {
+		this.type=UNDEFINITE;
 		this.value = value;
 		this.date = date;
 	}

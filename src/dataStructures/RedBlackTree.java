@@ -2,10 +2,8 @@ package dataStructures;
 
 import java.io.Serializable;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * This code is based in an implementation by
@@ -446,14 +444,6 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> i
         return (new JavaCompatibleRedBlackTree<T>(this));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return RedBlackTreePrinter.getString(this);
-    }
-
     @SuppressWarnings("serial")
 	protected static class RedBlackNode<T extends Comparable<T>> extends Node<T> implements Serializable{
 
@@ -514,50 +504,7 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> i
                     + " greater=" + ((greater != null) ? greater.id : "NULL");
         }
     }
-
-    protected static class RedBlackTreePrinter {
-
-        public static <T extends Comparable<T>> String getString(RedBlackTree<T> tree) {
-            if (tree.root == null)
-                return "Tree has no nodes.";
-            return getString((RedBlackNode<T>) tree.root, "", true);
-        }
-
-        public static <T extends Comparable<T>> String getString(RedBlackNode<T> node) {
-            if (node == null)
-                return "Sub-tree has no nodes.";
-            return getString(node, "", true);
-        }
-
-        private static <T extends Comparable<T>> String getString(RedBlackNode<T> node, String prefix, boolean isTail) {
-            StringBuilder builder = new StringBuilder();
-
-            builder.append(prefix + (isTail ? "└── " : "├── ") + "(" + ((node.color == RED) ? "RED" : "BLACK") + ") " + node.id
-                           + " [parent=" + ((node.parent!=null)?node.parent.id:"NULL") 
-                           + " grand-parent=" + ((node.parent!=null && node.parent.parent!=null)?node.parent.parent.id:"NULL")
-                           + "]\n"
-            );
-            List<Node<T>> children = null;
-            if (node.lesser != null || node.greater != null) {
-                children = new ArrayList<Node<T>>(2);
-                if (node.lesser != null)
-                    children.add(node.lesser);
-                if (node.greater != null)
-                    children.add(node.greater);
-            }
-            if (children != null) {
-                for (int i = 0; i < children.size() - 1; i++) {
-                    builder.append(getString((RedBlackNode<T>) children.get(i), prefix + (isTail ? "    " : "│   "), false));
-                }
-                if (children.size() >= 1) {
-                    builder.append(getString((RedBlackNode<T>) children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true));
-                }
-            }
-
-            return builder.toString();
-        }
-    }
-
+    
     public static class JavaCompatibleRedBlackTree<T extends Comparable<T>> extends java.util.AbstractCollection<T> {
 
         private RedBlackTree<T> tree = null;

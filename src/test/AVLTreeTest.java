@@ -7,16 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import dataStructures.AVLTree;
 import dataStructures.BinarySearchTree.DepthFirstSearchOrder;
-import dataStructures.RedBlackTree;
-import model.*
-;class AVLTreeTest {
-private AVLTree<Integer> tree;
-int uno;
-int dos;
-int tres;
-int cuatro;;
-int cinco;
-int diez;
+class AVLTreeTest {
+	private AVLTree<Integer> tree;
+	int uno;
+	int dos;
+	int tres;
+	int cuatro;;
+	int cinco;
+	int diez;
 	
 	void stage1() {
 		tree= new AVLTree<Integer>();
@@ -33,6 +31,7 @@ int diez;
 		
 	}
 	
+	@SuppressWarnings("unused")
 	void stage2() {
 		tree= new AVLTree<Integer>();
 		int uno=1;
@@ -40,10 +39,7 @@ int diez;
 		int tres=3;
 		int cuatro=4;
 		int cinco=5;
-		int diez=10;
-		
-		
-		
+		int diez=10;		
 	}
 	@Test
 	public void searchTest() {
@@ -100,16 +96,12 @@ int diez;
 		tree.add(uno);
 		
 		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.preOrder));
-		
-		
 	}
 
 	@Test
 	public void clearTest() {
 		stage1();
-		
 		tree.clear();
-		
 		assertEquals(0, tree.size());
 	}
 

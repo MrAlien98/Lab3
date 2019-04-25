@@ -1,8 +1,6 @@
 package dataStructures;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This code is based in an implementation by
@@ -241,14 +239,6 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> implem
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return AVLTreePrinter.getString(this);
-    }
-
     @SuppressWarnings("serial")
 	protected static class AVLNode<T extends Comparable<T>> extends Node<T> implements Serializable{
 
@@ -317,55 +307,6 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> implem
                 greaterHeight = greaterAVLNode.height;
             }
             return greaterHeight - lesserHeight;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String toString() {
-            return "value=" + id + " height=" + height + " parent=" + ((parent != null) ? parent.id : "NULL")
-                    + " lesser=" + ((lesser != null) ? lesser.id : "NULL") + " greater="
-                    + ((greater != null) ? greater.id : "NULL");
-        }
-    }
-
-    protected static class AVLTreePrinter {
-
-        public static <T extends Comparable<T>> String getString(AVLTree<T> tree) {
-            if (tree.root == null)
-                return "Tree has no nodes.";
-            return getString((AVLNode<T>) tree.root, "", true);
-        }
-
-        public static <T extends Comparable<T>> String getString(AVLNode<T> node) {
-            if (node == null)
-                return "Sub-tree has no nodes.";
-            return getString(node, "", true);
-        }
-
-        private static <T extends Comparable<T>> String getString(AVLNode<T> node, String prefix, boolean isTail) {
-            StringBuilder builder = new StringBuilder();
-
-            builder.append(prefix + (isTail ? "└── " : "├── ") + "(" + node.height + ") " + node.id + "\n");
-            List<Node<T>> children = null;
-            if (node.lesser != null || node.greater != null) {
-                children = new ArrayList<Node<T>>(2);
-                if (node.lesser != null)
-                    children.add(node.lesser);
-                if (node.greater != null)
-                    children.add(node.greater);
-            }
-            if (children != null) {
-                for (int i = 0; i < children.size() - 1; i++) {
-                    builder.append(getString((AVLNode<T>) children.get(i), prefix + (isTail ? "    " : "│   "), false));
-                }
-                if (children.size() >= 1) {
-                    builder.append(getString((AVLNode<T>) children.get(children.size() - 1), prefix + (isTail ? "    " : "│   "), true));
-                }
-            }
-
-            return builder.toString();
         }
     }
 }
