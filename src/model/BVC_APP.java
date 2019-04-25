@@ -76,17 +76,17 @@ public class BVC_APP {
 		this.forexs = general2;
 	}
 	
-	public void loadData(String url, LocalDate start, LocalDate end) {
+	public int loadData(String url, LocalDate start, LocalDate end) {
 		if(url.equals("AAPL") || url.equals("MSFT") || url.equals("US30") || url.equals("WTI") || url.equals("USSPX500")) {
-			loadData(2, url, start, end);
+			return loadData(2, url, start, end);
 		}else if(url.equals("BTCUSD")){
-			loadData(3, url, start, end);
+			return loadData(3, url, start, end);
 		}else {
-			loadData(1, url, start, end);
+			return loadData(1, url, start, end);
 		}
 	}
 	
-	public void loadData(int x, String url, LocalDate start, LocalDate end) {
+	public int loadData(int x, String url, LocalDate start, LocalDate end) {
 		File f=null;
 		try {
 			f=new File("src/financialData/"+url+".txt");
@@ -115,6 +115,7 @@ public class BVC_APP {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return x;
 	}
 
 	public void loadEverything(LocalDate start, LocalDate end) {
@@ -155,8 +156,32 @@ public class BVC_APP {
 					arr2.get(pos).add(ft);
 				}
 			}
+			br.close();
 		}catch(Exception e) {
 			
+		}
+	}
+	
+	public void find(int x, String url, LocalDate start, LocalDate end) {
+		int f=loadData(url, start, end);
+		if(f==1) {
+			if(x>0) {
+				
+			}else {
+				
+			}
+		}else if(f==2) {
+			if(x>0) {
+				
+			}else {
+				
+			}
+		}else {
+			if(x>0) {
+				
+			}else {
+				
+			}
 		}
 	}
 	

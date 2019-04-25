@@ -33,9 +33,9 @@
                                           <Button fx:id="butLoad" layoutX="58.0" layoutY="244.0" mnemonicParsing="false" text="Agregar" />
                                           <Label layoutX="70.0" layoutY="14.0" text="Desde" />
                                           <Label layoutX="72.0" layoutY="86.0" text="Hasta" />
-                                          <RadioButton fx:id="rbForex" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" text="Divisas" />
-                                          <RadioButton fx:id="rbStock" layoutX="87.0" layoutY="152.0" mnemonicParsing="false" text="Acciones" />
-                                          <ChoiceBox fx:id="choiceElement" layoutX="11.0" layoutY="207.0" prefHeight="25.0" prefWidth="143.0" />
+                                          <RadioButton fx:id="rbForex2" layoutX="14.0" layoutY="152.0" mnemonicParsing="false" text="Divisas" />
+                                          <RadioButton fx:id="rbStock2" layoutX="87.0" layoutY="152.0" mnemonicParsing="false" text="Acciones" />
+                                          <ChoiceBox fx:id="choiceElement2" layoutX="11.0" layoutY="207.0" prefHeight="25.0" prefWidth="143.0" />
                                           <Label layoutX="55.0" layoutY="190.0" text="Elementos" />
                                        </children>
                                     </AnchorPane>
