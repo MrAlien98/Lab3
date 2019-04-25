@@ -68,97 +68,6 @@ public class BVC_APP {
 	public RedBlackTree<FinancialThing> getForexs() {
 		return forexs;
 	}
-
-	/**
-	 * @param general2 the general2 to set
-	 */
-	public void setForexs(RedBlackTree<FinancialThing> general2) {
-		this.forexs = general2;
-	}
-	
-	public void loadData(String url, LocalDate start, LocalDate end) {
-		if(url.equals("AAPL") || url.equals("MSFT") || url.equals("US30") || url.equals("WTI") || url.equals("USSPX500")) {
-			loadData(2, url, start, end);
-		}else if(url.equals("BTCUSD")){
-			loadData(3, url, start, end);
-		}else {
-			loadData(1, url, start, end);
-		}
-	}
-	
-	public void loadData(int x, String url, LocalDate start, LocalDate end) {
-		File f=null;
-		try {
-			f=new File("src/financialData/"+url+".txt");
-			BufferedReader br=new BufferedReader(new FileReader(f));
-			String line="";
-			setBTCUSD(new ArrayList<>());
-			setStocks(new AVLTree<>());
-			setForexs(new RedBlackTree<>());
-			while((line=br.readLine())!=null) {
-				String[] obj=line.split(", ");
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy H:m");
-				String date = obj[1];
-				LocalDate lDate = LocalDate.parse(date, formatter);
-				if( lDate.isEqual(start) || (lDate.isAfter(start) && lDate.isBefore(end)) ) {
-					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[2]), lDate);
-					if(x==1) {
-						forexs.add(ft);
-					}else if(x==2){
-						stocks.add(ft);
-					}else {
-						BTCUSD.add(ft);
-					}
-				}
-			}
-			br.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void loadEverything(LocalDate start, LocalDate end) {
-		ArrayList<String>arr=new ArrayList<>();
-		arr.add("BTCUSD");
-		arr.add("EURUSD");
-		arr.add("GBPCAD");
-		arr.add("USDJPY");
-		arr.add("XAUUSD");
-		arr.add("US30");
-		arr.add("USSPX500");
-		arr.add("WTI");
-		arr2=new ArrayList<>();
-		arr2.add(getEURUSD());
-		arr2.add(getGBPCAD());
-		arr2.add(getUSDJPY());
-		arr2.add(getXAUUSD());
-		arr2.add(getUS30());
-		arr2.add(getUSSPX500());
-		arr2.add(getWTI());
-		for(int i=0;i<arr.size();i++){
-			loadEach(arr.get(i), i, start, end);
-		}
-	}
-	
-	public void loadEach(String url, int pos, LocalDate start, LocalDate end) {
-		try {
-			File f=new File("src/financialData/"+url+".txt");
-			BufferedReader br=new BufferedReader(new FileReader(f));
-			String line="";
-			while((line=br.readLine())!=null) {
-				String[] obj=line.split(", ");
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy H:m");
-				String date = obj[1];
-				LocalDate lDate = LocalDate.parse(date, formatter);
-				if( lDate.isEqual(start) || (lDate.isAfter(start) && lDate.isBefore(end)) ) {
-					FinancialThing ft=new FinancialThing(Double.parseDouble(obj[2]), lDate);
-					arr2.get(pos).add(ft);
-				}
-			}
-		}catch(Exception e) {
-			
-		}
-	}
 	
 	/**
 	 * @return the uS30
@@ -257,6 +166,99 @@ public class BVC_APP {
 	public void setXAUUSD(RedBlackTree<FinancialThing> xAUUSD) {
 		XAUUSD = xAUUSD;
 	}
+
+	/**
+	 * @param general2 the general2 to set
+	 */
+	public void setForexs(RedBlackTree<FinancialThing> general2) {
+		this.forexs = general2;
+	}
+	
+	public void loadData(String url, LocalDate start, LocalDate end) {
+		if(url.equals("AAPL") || url.equals("MSFT") || url.equals("US30") || url.equals("WTI") || url.equals("USSPX500")) {
+			loadData(2, url, start, end);
+		}else if(url.equals("BTCUSD")){
+			loadData(3, url, start, end);
+		}else {
+			loadData(1, url, start, end);
+		}
+	}
+	
+	public void loadData(int x, String url, LocalDate start, LocalDate end) {
+		File f=null;
+		try {
+			f=new File("src/financialData/"+url+".txt");
+			BufferedReader br=new BufferedReader(new FileReader(f));
+			String line="";
+			setBTCUSD(new ArrayList<>());
+			setStocks(new AVLTree<>());
+			setForexs(new RedBlackTree<>());
+			while((line=br.readLine())!=null) {
+				String[] obj=line.split(", ");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy H:m");
+				String date = obj[1];
+				LocalDate lDate = LocalDate.parse(date, formatter);
+				if( lDate.isEqual(start) || (lDate.isAfter(start) && lDate.isBefore(end)) ) {
+					FinancialThing ft=new FinancialThing(x, Double.parseDouble(obj[2]), lDate);
+					if(x==1) {
+						forexs.add(ft);
+					}else if(x==2){
+						stocks.add(ft);
+					}else {
+						BTCUSD.add(ft);
+					}
+				}
+			}
+			br.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadEverything(LocalDate start, LocalDate end) {
+		ArrayList<String>arr=new ArrayList<>();
+		arr.add("BTCUSD");
+		arr.add("EURUSD");
+		arr.add("GBPCAD");
+		arr.add("USDJPY");
+		arr.add("XAUUSD");
+		arr.add("US30");
+		arr.add("USSPX500");
+		arr.add("WTI");
+		arr2=new ArrayList<>();
+		arr2.add(getEURUSD());
+		arr2.add(getGBPCAD());
+		arr2.add(getUSDJPY());
+		arr2.add(getXAUUSD());
+		arr2.add(getUS30());
+		arr2.add(getUSSPX500());
+		arr2.add(getWTI());
+		for(int i=0;i<arr.size();i++){
+			loadEach(arr.get(i), i, start, end);
+		}
+	}
+	
+	public void loadEach(String url, int pos, LocalDate start, LocalDate end) {
+		try {
+			File f=new File("src/financialData/"+url+".txt");
+			BufferedReader br=new BufferedReader(new FileReader(f));
+			String line="";
+			while((line=br.readLine())!=null) {
+				String[] obj=line.split(", ");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy H:m");
+				String date = obj[1];
+				LocalDate lDate = LocalDate.parse(date, formatter);
+				if( lDate.isEqual(start) || (lDate.isAfter(start) && lDate.isBefore(end)) ) {
+					FinancialThing ft=new FinancialThing(Double.parseDouble(obj[2]), lDate);
+					arr2.get(pos).add(ft);
+				}
+			}
+		}catch(Exception e) {
+			
+		}
+	}
+	
+	
 
 	
 	
