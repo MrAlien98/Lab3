@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -9,32 +11,20 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <TabPane id="Tabpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
   <tabs>
-    <Tab text="Consultas">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" layoutX="220.0" layoutY="86.0" orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                    </items>
-                  </SplitPane>
-               </children></AnchorPane>
-      </content>
-    </Tab>
     <Tab text="Graficas">
-      <content>
+       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <SplitPane dividerPositions="0.8509485094850948" orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <SplitPane dividerPositions="0.2802013422818792" layoutX="199.0" layoutY="43.0" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <SplitPane dividerPositions="0.31711409395973156" layoutX="199.0" layoutY="43.0" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="283.0" prefWidth="172.0">
                                        <children>
@@ -51,16 +41,57 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <Canvas fx:id="graphic" height="310.0" layoutY="-1.0" width="426.0" />
+                                          <AreaChart fx:id="chartArea" layoutX="-56.0" layoutY="-16.0" prefHeight="367.0" prefWidth="404.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
                                        </children>
                                     </AnchorPane>
                                 </items>
                               </SplitPane>
                            </children>
                         </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Consultas">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <SplitPane orientation="VERTICAL" prefHeight="371.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Button fx:id="butCleanCanvas" layoutX="253.0" layoutY="14.0" mnemonicParsing="false" text="LimpiarGrafica" />
+                              <SplitPane dividerPositions="0.5704697986577181" prefHeight="245.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="283.0" prefWidth="172.0">
+                                       <children>
+                                          <DatePicker fx:id="initialDate" layoutX="6.0" layoutY="31.0" prefHeight="13.0" prefWidth="132.0" />
+                                          <DatePicker fx:id="endDate" layoutX="184.0" layoutY="31.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <Label layoutX="70.0" layoutY="14.0" text="Desde" />
+                                          <Label layoutX="234.0" layoutY="14.0" text="Hasta" />
+                                          <RadioButton fx:id="rbForex" layoutX="14.0" layoutY="82.0" mnemonicParsing="false" text="Divisas" />
+                                          <RadioButton fx:id="rbStock" layoutX="87.0" layoutY="82.0" mnemonicParsing="false" text="Acciones" />
+                                          <ChoiceBox fx:id="choiceElement" layoutX="178.0" layoutY="78.0" prefHeight="25.0" prefWidth="143.0" />
+                                          <Label layoutX="222.0" layoutY="56.0" text="Elementos" />
+                                        <Button fx:id="butHighP" layoutX="14.0" layoutY="159.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Precio mas bajo" />
+                                          <Button fx:id="butLowP" layoutX="15.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Precio mas alto" />
+                                          <Button fx:id="butStarValue" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" text="Acciones que superan el valor estrella" />
+                                          <Button fx:id="butHighestGrowth" layoutX="13.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="198.0" text="Elemento con mayor crecimiento" />
+                                          <Button fx:id="butThreeHighest" layoutX="14.0" layoutY="234.0" mnemonicParsing="false" text="3 Elementos con mayor crecimiento" />
+                                          <TextField fx:id="txtStarValue" layoutX="239.0" layoutY="268.0" prefHeight="25.0" prefWidth="86.0" />
+                                          <Label layoutX="248.0" layoutY="251.0" text="Valor estrella" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                                </items>
+                              </SplitPane>
                            </children>
                         </AnchorPane>
                     </items>

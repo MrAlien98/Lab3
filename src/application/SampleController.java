@@ -4,29 +4,32 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
-import javafx.scene.paint.Color;
+import javafx.scene.control.TextField;
 
 public class SampleController {
 
     @FXML private DatePicker initialDate;
     @FXML private DatePicker endDate;
-
+    
     @FXML private RadioButton rbForex;
     @FXML private RadioButton rbStock;
 
     @FXML private Button butLoad;
-    @FXML private Button butCleanCanvas;
+    @FXML private Button butHighP;
+    @FXML private Button butLowP;
+    @FXML private Button butStarValue;
+    @FXML private Button butHighestGrowth;
+    @FXML private Button butThreeHighest;    
     
-    @FXML private Canvas graphic;
+    @FXML private AreaChart<String, Number> chartArea;
     
-    @FXML private GraphicsContext g;
-    
+    @FXML private TextField txtStarValue;
+
     @FXML private ChoiceBox<String> choiceElement;
 
     ArrayList<String> colors=new ArrayList<>();
@@ -42,18 +45,10 @@ public class SampleController {
     	colors.add("RED");
     }
     
-    public void initialize() {
-    	g=graphic.getGraphicsContext2D();
-    	
+    public void initialize() {    	
     	rbForex.setOnAction(e-> checkers(1));
     	rbStock.setOnAction(e-> checkers(-1));
-    	butCleanCanvas.setOnAction(e-> clean());
     	butLoad.setOnAction(e-> sendInfo());
-    }
-    
-    public void clean() {
-    	g.setFill(Color.WHITE);
-    	g.fillRect(0, 0, graphic.getWidth(), graphic.getHeight());
     }
     
     public void sendInfo() {
