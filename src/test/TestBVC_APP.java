@@ -64,5 +64,6 @@ class TestBVC_APP {
 		Node<FinancialThing> eL2=b.getForexs().search(webos2);
 		assertEquals(webos2.getValue(), eL2.getID().getValue());
 	}
+		
 	
 }
