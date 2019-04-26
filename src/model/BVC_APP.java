@@ -189,6 +189,7 @@ public class BVC_APP {
 	}
 
 	public int loadData(String url, LocalDate start, LocalDate end) {
+		try {
 		if(url.equals("AAPL") || url.equals("MSFT") || url.equals("US30") || url.equals("WTI") || url.equals("USSPX500")) {
 			return loadData(2, url, start, end);
 		}else if(url.equals("BTCUSD")){
@@ -196,6 +197,10 @@ public class BVC_APP {
 		}else {
 			return loadData(1, url, start, end);
 		}
+		}catch (NullPointerException e) {
+			e.fillInStackTrace();
+		}
+		return 0;
 	}
 	
 	public int loadData(int x, String url, LocalDate start, LocalDate end) {
