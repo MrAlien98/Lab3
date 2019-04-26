@@ -1,10 +1,12 @@
 package application;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -48,6 +50,8 @@ public class SampleController {
     }
     
     public void initialize() {    	
+    	butLoad.setOnAction(e-> graphic());
+    	
     	rbForex.setOnAction(e-> checkers(1));
     	rbStock.setOnAction(e-> checkers(-1));
     	
@@ -58,6 +62,13 @@ public class SampleController {
     	
     	butHighP.setOnAction(e-> sendInfo(1));
         butLowP.setOnAction(e-> sendInfo(-1));
+    }
+    
+    public void graphic() {
+//    	CategoryAxis xAxis = new CategoryAxis();
+//    	CategoryAxis yAxis = new CategoryAxis();
+//        xAxis.setCategories(FXCollections.<String>observableArrayList(
+//        		Arrays.asList("1750", "1800", "1850", "1900", "1950", "1999", "2050" )));
     }
     
     public void sendInfo() {
