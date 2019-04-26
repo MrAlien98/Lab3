@@ -18,7 +18,7 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> i
 	private static final long serialVersionUID = 1L;
 	protected static final boolean BLACK = false;
     protected static final boolean RED = true;
-
+    
     /**
      * Default constructor.
      */
@@ -34,6 +34,10 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> i
         };
     }
 
+    public Node<T> getRoot() {
+    	return root;
+    }
+    
     /**
      * Constructor with external Node creator.
      */

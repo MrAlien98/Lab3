@@ -274,25 +274,25 @@ public class BVC_APP {
 		}
 	}
 	
-	public void find(int x, String url, LocalDate start, LocalDate end) {
+	public FinancialThing find(int x, String url, LocalDate start, LocalDate end) {
 		int f=loadData(url, start, end);
 		if(f==1) {
 			if(x>0) {
-				
+				return forexs.getLesser().getID();
 			}else {
-				
+				return forexs.getGreater().getID();
 			}
 		}else if(f==2) {
 			if(x>0) {
-				
+				return (stocks.getLesser().getID());
 			}else {
-				
+				return (stocks.getGreater().getID());
 			}
 		}else {
 			if(x>0) {
-				
+				return getBTCUSD().get(getBTCUSD().size()-1);
 			}else {
-				
+				return getBTCUSD().get(0);
 			}
 		}
 	}

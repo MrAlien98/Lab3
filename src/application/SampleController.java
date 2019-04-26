@@ -1,6 +1,6 @@
 package application;
 
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -10,6 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import model.FinancialThing;
 
 public class SampleController {
 
@@ -33,21 +34,17 @@ public class SampleController {
     @FXML private AreaChart<String, Number> chartArea;
     
     @FXML private TextField txtStarValue;
-
+    
+    @FXML private TextField txtType;
+    @FXML private TextField txtDate;
+    @FXML private TextField txtValue;
+    
+    
     @FXML private ChoiceBox<String> choiceElement;
     @FXML private ChoiceBox<String> choiceElement2;
-
-    ArrayList<String> colors=new ArrayList<>();
     
     public SampleController() {
-    	colors.add("YELLOW");
-    	colors.add("BROWN");
-    	colors.add("GOLD");
-    	colors.add("GREEN");
-    	colors.add("BLUE");
-    	colors.add("GRAY");
-    	colors.add("BLACK");
-    	colors.add("RED");
+
     }
     
     public void initialize() {    	
@@ -70,7 +67,19 @@ public class SampleController {
     
     public void sendInfo(int x) {
     	String selected=choiceElement.getValue();
-    	Main.getBVC().find(x, selected, initialDate.getValue(), endDate.getValue());
+    	FinancialThing result=Main.getBVC().find(x, selected, initialDate.getValue(), endDate.getValue());
+    	int n=result.getType();
+    	if(n==1) {
+    		txtType.setText("Divisa");
+    	}else if(n==2) {
+    		txtType.setText("Accion");
+    	}else {
+    		txtType.setText("Bitcoin (Divisa)");
+    	}
+    	txtValue.setText("$ "+result.getValue());
+    	DateTimeFormatter format=DateTimeFormatter.ofPattern("d/M/yyyy");
+    	String date=result.getDate().format(format);
+    	txtDate.setText(date);
     }
     
     public void checkers(int x) {

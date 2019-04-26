@@ -89,7 +89,15 @@
                                           <Label layoutX="248.0" layoutY="251.0" text="Valor estrella" />
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TextField fx:id="txtType" layoutX="14.0" layoutY="32.0" />
+                                          <TextField fx:id="txtDate" layoutX="14.0" layoutY="106.0" />
+                                          <TextField fx:id="txtValue" layoutX="14.0" layoutY="67.0" />
+                                          <Label layoutX="195.0" layoutY="36.0" text="Tipo" />
+                                          <Label layoutX="195.0" layoutY="71.0" text="Valor" />
+                                          <Label layoutX="193.0" layoutY="110.0" text="Fecha" />
+                                       </children></AnchorPane>
                                 </items>
                               </SplitPane>
                            </children>

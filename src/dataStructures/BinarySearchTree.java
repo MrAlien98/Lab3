@@ -66,6 +66,22 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Seri
         return (nodeAdded != null);
     }
 
+    public Node<T> getGreater(){
+    	Node<T> temp=root;
+    	while(temp.greater!=null) {
+    		temp=temp.greater;
+    	}
+    	return temp;
+    }
+    
+    public Node<T> getLesser(){
+    	Node<T> temp=root;
+    	while(temp.lesser!=null) {
+    		temp=temp.lesser;
+    	}
+    	return temp;
+    }
+    
     /**
      * Add value to the tree and return the Node that was added. Tree can
      * contain multiple equal values.
