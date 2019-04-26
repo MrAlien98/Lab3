@@ -74,6 +74,15 @@ class TestBVC_APP {
 		b.loadEach(url, 0, start, end);
 		assertNotNull(b.getArr2().get(0));
 	}
+	
+	@Test
+	void loadEverythingTest1() { 
+		stage1();
+		LocalDate start=LocalDate.of(2019, 3, 20);
+		LocalDate end=LocalDate.of(2019, 3, 6);
+		b.loadEverything(start, end);
+		assertNotNull(b.getArr2().get(4));
+	}
 
 	
 
