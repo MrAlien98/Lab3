@@ -1,12 +1,9 @@
 package application;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
