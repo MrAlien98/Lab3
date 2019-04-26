@@ -64,27 +64,6 @@ class TestBVC_APP {
 		Node<FinancialThing> eL2=b.getForexs().search(webos2);
 		assertEquals(webos2.getValue(), eL2.getID().getValue());
 	}
-	
-//	@Test
-//	void loadEachTest1() { 
-//		stage1();
-//		LocalDate start=LocalDate.of(2019, 3, 20);
-//		LocalDate end=LocalDate.of(2019, 3, 6);
-//		String url = "US30";
-//		b.loadEach(url, 0, start, end);
-//		assertNotNull(b.getArr2().get(0));
-//	}
-//	
-//	@Test
-//	void loadEverythingTest1() { 
-//		stage1();
-//		LocalDate start=LocalDate.of(2019, 3, 20);
-//		LocalDate end=LocalDate.of(2019, 3, 6);
-//		b.loadEverything(start, end);
-//		assertNotNull(b.getArr2().get(4));
-//	}
-
-	
-
+		
 	
 }
