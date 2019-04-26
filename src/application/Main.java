@@ -16,9 +16,10 @@ public class Main extends Application {
 	public Main() {
 		bvc=new BVC_APP();
 	}
-	
+	//It works!!
 	public static BVC_APP getBVC() {
 		return bvc;
+		
 	}
 	
 	@Override
